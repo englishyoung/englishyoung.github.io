@@ -6,11 +6,11 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>EnglishYongSpace</title>
+  <title>Archives: 2019 | EnglishYongSpace</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="EnglishYongSpace">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
 <meta property="og:site_name" content="EnglishYongSpace">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="EnglishYongSpace">
@@ -146,793 +146,74 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-SpringBoot一些配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/13/SpringBoot%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE/">SpringBoot一些配置 </a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/13/SpringBoot%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE/" class="archive-article-date">
-  	<time datetime="2020-02-13T11:31:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-13</time>
-</a>
-        
-      </header>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="定制Banner"><a href="#定制Banner" class="headerlink" title="定制Banner"></a>定制Banner</h2><p>Spring Boot项目在启动的时候会有一个默认的启动图案：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  .   ____          _            __ _ _</span><br><span class="line"> &#x2F;\\ &#x2F; ___&#39;_ __ _ _(_)_ __  __ _ \ \ \ \</span><br><span class="line">( ( )\___ | &#39;_ | &#39;_| | &#39;_ \&#x2F; _&#96; | \ \ \ \</span><br><span class="line"> \\&#x2F;  ___)| |_)| | | | | || (_| |  ) ) ) )</span><br><span class="line">  &#39;  |____| .__|_| |_|_| |_\__, | &#x2F; &#x2F; &#x2F; &#x2F;</span><br><span class="line"> &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;|_|&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;|___&#x2F;&#x3D;&#x2F;_&#x2F;_&#x2F;_&#x2F;</span><br><span class="line"> :: Spring Boot ::        (v1.5.9.RELEASE)</span><br></pre></td></tr></table></figure>
-
-
-
-<p>我们可以把这个图案修改为自己想要的。在src/main/resources目录下新建banner.txt文件，然后将自己的图案黏贴进去即可。ASCII图案可通过网站<a href="http://www.network-science.de/ascii/一键生成，比如输入mrbird生成图案后复制到banner.txt，启动项目，eclipse控制台输出如下：" target="_blank" rel="noopener">http://www.network-science.de/ascii/一键生成，比如输入mrbird生成图案后复制到banner.txt，启动项目，eclipse控制台输出如下：</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">  _   _   _   _   _   _  </span><br><span class="line"> &#x2F; \ &#x2F; \ &#x2F; \ &#x2F; \ &#x2F; \ &#x2F; \ </span><br><span class="line">( m | r | b | i | r | d )</span><br><span class="line"> \_&#x2F; \_&#x2F; \_&#x2F; \_&#x2F; \_&#x2F; \_&#x2F; </span><br><span class="line">...</span><br><span class="line">2017-08-12 10:11:25.952  INFO 7160 --- [main] o.s.j.e.a.AnnotationMBeanExporter : Registering beans for JMX exposure on startup</span><br><span class="line">2017-08-12 10:11:26.057  INFO 7160 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)</span><br><span class="line">2017-08-12 10:11:26.064  INFO 7160 --- [main] com.springboot.demo.DemoApplication : Started DemoApplication in 3.933 seconds (JVM running for 4.241)</span><br></pre></td></tr></table></figure>
-
-
-
-<p>banner也可以关闭，在main方法中：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    SpringApplication app &#x3D; new SpringApplication(DemoApplication.class);</span><br><span class="line">    app.setBannerMode(Mode.OFF);</span><br><span class="line">    app.run(args);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="全局配置文件"><a href="#全局配置文件" class="headerlink" title="全局配置文件"></a>全局配置文件</h2><p>在src/main/resources目录下，Spring Boot提供了一个名为application.properties的全局配置文件，可对一些默认配置的配置值进行修改。</p>
-<blockquote>
-<p>附：<a href="https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html" target="_blank" rel="noopener">application.properties中可配置所有官方属性</a></p>
-</blockquote>
-<h3 id="自定义属性值"><a href="#自定义属性值" class="headerlink" title="自定义属性值"></a>自定义属性值</h3><p>Spring Boot允许我们在application.properties下自定义一些属性，比如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mrbird.blog.name&#x3D;mrbird&#39;s blog</span><br><span class="line">mrbird.blog.title&#x3D;Spring Boot</span><br></pre></td></tr></table></figure>
-
-
-
-<p>定义一个BlogProperties Bean，通过<code>@Value(&quot;${属性名}&quot;)</code>来加载配置文件中的属性值：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Component</span><br><span class="line">public class BlogProperties &#123;</span><br><span class="line">	</span><br><span class="line">    @Value(&quot;$&#123;mrbird.blog.name&#125;&quot;)</span><br><span class="line">    private String name;</span><br><span class="line">    </span><br><span class="line">    @Value(&quot;$&#123;mrbird.blog.title&#125;&quot;)</span><br><span class="line">    private String title;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; get,set略	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>编写IndexController，注入该Bean：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">public class IndexController &#123;</span><br><span class="line">    @Autowired</span><br><span class="line">    private BlogProperties blogProperties;</span><br><span class="line">    </span><br><span class="line">    @RequestMapping(&quot;&#x2F;&quot;)</span><br><span class="line">    String index() &#123;</span><br><span class="line">        return blogProperties.getName()+&quot;——&quot;+blogProperties.getTitle();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>启动项目，访问<a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080</a>，页面显示如下：</p>
-<p><img src="https://mrbird.cc/img/QQ%E6%88%AA%E5%9B%BE20171130112735.png" alt="QQ截图20171130112735.png"></p>
-<p>在属性非常多的情况下，也可以定义一个和配置文件对应的Bean：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@ConfigurationProperties(prefix&#x3D;&quot;mrbird.blog&quot;)</span><br><span class="line">public class ConfigBean &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private String title;</span><br><span class="line">    &#x2F;&#x2F; get,set略</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>通过注解<code>@ConfigurationProperties(prefix=&quot;mrbird.blog&quot;)</code>指明了属性的通用前缀，通用前缀加属性名和配置文件的属性名一一对应。</p>
-<p>除此之外还需在Spring Boot入口类加上注解<code>@EnableConfigurationProperties({ConfigBean.class})</code>来启用该配置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication</span><br><span class="line">@EnableConfigurationProperties(&#123;ConfigBean.class&#125;)</span><br><span class="line">public class Application &#123;</span><br><span class="line">	</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        SpringApplication.run(Application.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>之后便可在IndexController中注入该Bean，并使用了：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">public class IndexController &#123;</span><br><span class="line">    @Autowired</span><br><span class="line">    private ConfigBean configBean;</span><br><span class="line">    </span><br><span class="line">    @RequestMapping(&quot;&#x2F;&quot;)</span><br><span class="line">    String index() &#123;</span><br><span class="line">        return configBean.getName()+&quot;——&quot;+configBean.getTitle();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="属性间的引用"><a href="#属性间的引用" class="headerlink" title="属性间的引用"></a>属性间的引用</h3><p>在application.properties配置文件中，各个属性可以相互引用，如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mrbird.blog.name&#x3D;mrbird&#39;s blog</span><br><span class="line">mrbird.blog.title&#x3D;Spring Boot</span><br><span class="line">mrbird.blog.wholeTitle&#x3D;$&#123;mrbird.blog.name&#125;--$&#123;mrbird.blog.title&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="自定义配置文件"><a href="#自定义配置文件" class="headerlink" title="自定义配置文件"></a>自定义配置文件</h2><p>除了可以在application.properties里配置属性，我们还可以自定义一个配置文件。在src/main/resources目录下新建一个test.properties:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">test.name&#x3D;KangKang</span><br><span class="line">test.age&#x3D;25</span><br></pre></td></tr></table></figure>
-
-
-
-<p>定义一个对应该配置文件的Bean：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">@ConfigurationProperties(prefix&#x3D;&quot;test&quot;)</span><br><span class="line">@PropertySource(&quot;classpath:test.properties&quot;)</span><br><span class="line">@Component</span><br><span class="line">public class TestConfigBean &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line">    &#x2F;&#x2F; get,set略</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>注解<code>@PropertySource(&quot;classpath:test.properties&quot;)</code>指明了使用哪个配置文件。要使用该配置Bean，同样也需要在入口类里使用注解<code>@EnableConfigurationProperties({TestConfigBean.class})</code>来启用该配置。</p>
-<h2 id="通过命令行设置属性值"><a href="#通过命令行设置属性值" class="headerlink" title="通过命令行设置属性值"></a>通过命令行设置属性值</h2><p>在运行Spring Boot jar文件时，可以使用命令<code>java -jar xxx.jar --server.port=8081</code>来改变端口的值。这条命令等价于我们手动到application.properties中修改（如果没有这条属性的话就添加）server.port属性的值为8081。</p>
-<p>如果不想项目的配置被命令行修改，可以在入口文件的main方法中进行如下设置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    SpringApplication app &#x3D; new SpringApplication(Application.class);</span><br><span class="line">    app.setAddCommandLineProperties(false);</span><br><span class="line">    app.run(args);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="使用xml配置"><a href="#使用xml配置" class="headerlink" title="使用xml配置"></a>使用xml配置</h2><p>虽然Spring Boot并不推荐我们继续使用xml配置，但如果出现不得不使用xml配置的情况，Spring Boot允许我们在入口类里通过注解<code>@ImportResource({&quot;classpath:some-application.xml&quot;})</code>来引入xml配置文件。</p>
-<h2 id="Profile配置"><a href="#Profile配置" class="headerlink" title="Profile配置"></a>Profile配置</h2><p>Profile用来针对不同的环境下使用不同的配置文件，多环境配置文件必须以<code>application-{profile}.properties</code>的格式命，其中<code>{profile}</code>为环境标识。比如定义两个配置文件：</p>
-<ul>
-<li><p>application-dev.properties：开发环境</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">server.port&#x3D;8080</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>application-prod.properties：生产环境</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">server.port&#x3D;8081</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>至于哪个具体的配置文件会被加载，需要在application.properties文件中通过<code>spring.profiles.active</code>属性来设置，其值对应<code>{profile}</code>值。</p>
-<p>如：<code>spring.profiles.active=dev</code>就会加载application-dev.properties配置文件内容。可以在运行jar文件的时候使用命令<code>java -jar xxx.jar --spring.profiles.active={profile}</code>切换不同的环境配置。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
+    
       
       
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/13/SpringBoot%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-SpringBoot开启" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+        <div class="archives">
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/12/SpringBoot%E5%BC%80%E5%90%AF/">SpringBoot开启</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/12/SpringBoot%E5%BC%80%E5%90%AF/" class="archive-article-date">
-  	<time datetime="2020-02-12T08:38:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="生成项目文件"><a href="#生成项目文件" class="headerlink" title="生成项目文件"></a>生成项目文件</h2><p>访问<a href="http://start.spring.io/，页面显示如下：" target="_blank" rel="noopener">http://start.spring.io/，页面显示如下：</a></p>
-<p><img src="https://mrbird.cc/img/mrbird_photo_20171129094017.png" alt=""></p>
-<p>：</p>
-<p><img src="https://mrbird.cc/img/mrbird_photo_20171129094312.png" alt="mrbird_photo_20171129094312.png"></p>
-        
-          <a class="article-more-a" href="/2020/02/12/SpringBoot%E5%BC%80%E5%90%AF/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/12/SpringBoot%E5%BC%80%E5%90%AF/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Spring事务管理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/23/Spring%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86/">Spring事务管理</a>
-    </h1>
-  
-
-        
-        <a href="/2020/01/23/Spring%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86/" class="archive-article-date">
-  	<time datetime="2020-01-23T07:12:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在<a href="https://mrbird.cc/Spring-SimpleJdbcTemplate.html" target="_blank" rel="noopener">SimpleJdbcTemplate</a>的UserDaoImpl中的addUser()方法中手动制造一个NullPointerException异常：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public void addUser(User user) &#123;</span><br><span class="line">    Map&lt;String, Object&gt; params&#x3D;new HashMap&lt;String, Object&gt;();</span><br><span class="line">    params.put(&quot;name&quot;, user.getName());</span><br><span class="line">    params.put(&quot;age&quot;, user.getAge());</span><br><span class="line">    params.put(&quot;pwd&quot;, user.getPassword());</span><br><span class="line">    jdbcTemplate.update(SQL_INSERT_USER, params);</span><br><span class="line">    String a &#x3D; null;</span><br><span class="line">    a.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2020/01/23/Spring%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/23/Spring%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Spring-XML中声明切面" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/21/Spring-XML%E4%B8%AD%E5%A3%B0%E6%98%8E%E5%88%87%E9%9D%A2/">Spring XML中声明切面</a>
-    </h1>
-  
-
-        
-        <a href="/2020/01/21/Spring-XML%E4%B8%AD%E5%A3%B0%E6%98%8E%E5%88%87%E9%9D%A2/" class="archive-article-date">
-  	<time datetime="2020-01-21T04:10:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在Spring AOP中，需要使用AspectJ的切点表达式语言来定义切点。下表列出了Spring AOP所支持的AspectJ切点指示器：</p>
-<table>
-<thead>
-<tr>
-<th align="left">AspectJ指示器</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">arg()</td>
-<td align="left">限制连接点匹配参数为指定类型的执行方法</td>
-</tr>
-<tr>
-<td align="left">@args()</td>
-<td align="left">限制连接点匹配参数由指定注解标注的执行方法</td>
-</tr>
-<tr>
-<td align="left">execution()</td>
-<td align="left">用于匹配是连接点的执行方法</td>
-</tr>
-<tr>
-<td align="left">this()</td>
-<td align="left">限制连接点匹配AOP代理的Bean引用的指定类型的类</td>
-</tr>
-<tr>
-<td align="left">target()</td>
-<td align="left">限制连接点匹配目标对象为执行类型的类</td>
-</tr>
-<tr>
-<td align="left">@target()</td>
-<td align="left">限制连接点匹配特定的执行对象，这些对象对应的类要具备指定类型的注解</td>
-</tr>
-<tr>
-<td align="left">within()</td>
-<td align="left">限制连接点匹配指定的类型</td>
-</tr>
-<tr>
-<td align="left">@within()</td>
-<td align="left">限制连接点匹配指定注解所标注的类型(当使用Spring AOP时，方法定义在由指定的注解所标注的类里)</td>
-</tr>
-<tr>
-<td align="left">@annotation()</td>
-<td align="left">限制匹配带有指定注解连接点</td>
-</tr>
-</tbody></table>
-        
-          <a class="article-more-a" href="/2020/01/21/Spring-XML%E4%B8%AD%E5%A3%B0%E6%98%8E%E5%88%87%E9%9D%A2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/21/Spring-XML%E4%B8%AD%E5%A3%B0%E6%98%8E%E5%88%87%E9%9D%A2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-AOP入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/20/AOP%E5%85%A5%E9%97%A8/">AOP入门</a>
-    </h1>
-  
-
-        
-        <a href="/2020/01/20/AOP%E5%85%A5%E9%97%A8/" class="archive-article-date">
-  	<time datetime="2020-01-20T03:26:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>在软件业，AOP为Aspect Oriented Programming的缩写，意为：面向切面编程，通过预编译方式和运行期动态代理实现程序功能的统一维护的一种技术。AOP是OOP的延续，是软件开发中的一个热点，也是Spring框架中的一个重要内容，是函数式编程的一种衍生范型。利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的效率。—— 百度百科</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2020/01/20/AOP%E5%85%A5%E9%97%A8/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/20/AOP%E5%85%A5%E9%97%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Spring自动装配" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/18/Spring%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D/">Spring自动装配 </a>
-    </h1>
-  
-
-        
-        <a href="/2020/01/18/Spring%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D/" class="archive-article-date">
-  	<time datetime="2020-01-18T15:21:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>为了简化XML配置，Spring提供了自动装配（autowiring）。</p>
-        
-          <a class="article-more-a" href="/2020/01/18/Spring%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/18/Spring%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java-math-BigDecimal类常用方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/13/Java-math-BigDecimal%E7%B1%BB%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/">Java.math.BigDecimal类常用方法</a>
-    </h1>
-  
-
-        
-        <a href="/2020/01/13/Java-math-BigDecimal%E7%B1%BB%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2020-01-13T03:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在编程中，当我们需要得到精确的运算结果的时候，+，-，*，/ 已经不能满足我们的需求，比如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(0.1+0.2); &#x2F;&#x2F;0.30000000000000004</span><br><span class="line">System.out.println(0.3-0.2); &#x2F;&#x2F;0.09999999999999998</span><br><span class="line">System.out.println(0.1*0.2); &#x2F;&#x2F;0.020000000000000004</span><br><span class="line">System.out.println(1.2&#x2F;3);   &#x2F;&#x2F;0.39999999999999997</span><br></pre></td></tr></table></figure>
-
-
-
-<p>简单的运算结果却不符合我们的预期。</p>
-        
-          <a class="article-more-a" href="/2020/01/13/Java-math-BigDecimal%E7%B1%BB%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/13/Java-math-BigDecimal%E7%B1%BB%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java并发基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/12/Java%E5%B9%B6%E5%8F%91%E5%9F%BA%E7%A1%80/">Java并发基础</a>
-    </h1>
-  
-
-        
-        <a href="/2020/01/12/Java%E5%B9%B6%E5%8F%91%E5%9F%BA%E7%A1%80/" class="archive-article-date">
-  	<time datetime="2020-01-12T08:09:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Thread 类的每一个实例都表示一个线程， 进程是操作系统级别的多任务，JVM 就是运行在一个进程中的。所以在Java 中我我们只考虑线程。进程有独立的内存，一个进程间的多个线程共享进程的内存进程中至少要有一个线程。</p>
-        
-          <a class="article-more-a" href="/2020/01/12/Java%E5%B9%B6%E5%8F%91%E5%9F%BA%E7%A1%80/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/12/Java%E5%B9%B6%E5%8F%91%E5%9F%BA%E7%A1%80/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-内部类" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/27/%E5%86%85%E9%83%A8%E7%B1%BB/">内部类</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/27/%E5%86%85%E9%83%A8%E7%B1%BB/" class="archive-article-date">
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/12/27/%E5%86%85%E9%83%A8%E7%B1%BB/" class="archive-article-date">
   	<time datetime="2019-12-27T12:21:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-27</time>
 </a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一-内部类基础"><a href="#一-内部类基础" class="headerlink" title="一.内部类基础"></a>一.内部类基础</h2><p>在 Java 中，可以将一个类定义在另一个类里面或者一个方法里面，这样的类称为内部类。广泛意义上的内部类一般来说包括这四种：成员内部类、局部内部类、匿名内部类和静态内部类。下面就先来了解一下这四种内部类的用法。</p>
-        
-          <a class="article-more-a" href="/2019/12/27/%E5%86%85%E9%83%A8%E7%B1%BB/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/27/%E5%86%85%E9%83%A8%E7%B1%BB/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-yyynbnbnb" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/26/yyynbnbnb/">First</a>
+      <a class="archive-article-title" href="/2019/12/27/%E5%86%85%E9%83%A8%E7%B1%BB/">内部类</a>
     </h1>
   
 
-        
-        <a href="/2019/12/26/yyynbnbnb/" class="archive-article-date">
-  	<time datetime="2019-12-26T15:29:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="OHOHOHOHOHOHOHOHOHOHOHOHOHOHOH"><a href="#OHOHOHOHOHOHOHOHOHOHOHOHOHOHOH" class="headerlink" title="OHOHOHOHOHOHOHOHOHOHOHOHOHOHOH"></a>OHOHOHOHOHOHOHOHOHOHOHOHOHOHOH</h2>
-      
+        <div class="article-info info-on-right">
+          
+          
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/26/yyynbnbnb/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/12/26/yyynbnbnb/" class="archive-article-date">
+  	<time datetime="2019-12-26T15:29:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-26</time>
+</a>
         </div>
-        
-        
-    </div>
-</aside>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/12/26/yyynbnbnb/">First</a>
+    </h1>
+  
 
+        <div class="article-info info-on-right">
+          
+          
 
-
-
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
   
   
+    </div></section>
+  
+
+    
 
 
           </div>
@@ -954,9 +235,9 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
+		isHome: false,
 		isPost: false,
-		isArchive: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

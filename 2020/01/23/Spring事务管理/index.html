@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020/12 | EnglishYongSpace</title>
+  <title>Spring事务管理 | EnglishYongSpace</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="EnglishYongSpace">
-<meta property="og:url" content="http://yoursite.com/archives/2020/12/index.html">
+  <meta name="description" content="在SimpleJdbcTemplate的UserDaoImpl中的addUser()方法中手动制造一个NullPointerException异常： 123456789public void addUser(User user) &amp;#123;    Map&lt;String, Object&gt; params&#x3D;new HashMap&lt;String, Object&gt;();">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring事务管理">
+<meta property="og:url" content="http://yoursite.com/2020/01/23/Spring%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86/index.html">
 <meta property="og:site_name" content="EnglishYongSpace">
+<meta property="og:description" content="在SimpleJdbcTemplate的UserDaoImpl中的addUser()方法中手动制造一个NullPointerException异常： 123456789public void addUser(User user) &amp;#123;    Map&lt;String, Object&gt; params&#x3D;new HashMap&lt;String, Object&gt;();">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-01-23T07:12:19.000Z">
+<meta property="article:modified_time" content="2020-05-12T08:34:51.662Z">
 <meta property="article:author" content="EnglishYongSpace">
 <meta name="twitter:card" content="summary">
   
@@ -39,11 +43,11 @@
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<div class="overlay" style="background: #4d4d4d"></div>
+<div class="overlay" style="background: #F0EFFE"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="" class="js-avatar">
+			<img src="/img/header.JPG" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">EnglishYongSpace</a></h1>
@@ -92,14 +96,14 @@
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
 <nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
+  	<div class="overlay js-overlay" style="background: #F0EFFE"></div>
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="" class="js-avatar">
+				<img src="/img/header.JPG" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">EnglishYongSpace</h1>
@@ -144,49 +148,354 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Spring事务管理" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/12/26/yyynbnbnb/" class="archive-article-date">
-  	<time datetime="2020-12-26T15:29:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-26</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/12/26/yyynbnbnb/">yyynbnbnb</a>
+    <h1 class="article-title" itemprop="name">
+      Spring事务管理
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
+        
+        <a href="/2020/01/23/Spring%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86/" class="archive-article-date">
+  	<time datetime="2020-01-23T07:12:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在<a href="https://mrbird.cc/Spring-SimpleJdbcTemplate.html" target="_blank" rel="noopener">SimpleJdbcTemplate</a>的UserDaoImpl中的addUser()方法中手动制造一个NullPointerException异常：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public void addUser(User user) &#123;</span><br><span class="line">    Map&lt;String, Object&gt; params&#x3D;new HashMap&lt;String, Object&gt;();</span><br><span class="line">    params.put(&quot;name&quot;, user.getName());</span><br><span class="line">    params.put(&quot;age&quot;, user.getAge());</span><br><span class="line">    params.put(&quot;pwd&quot;, user.getPassword());</span><br><span class="line">    jdbcTemplate.update(SQL_INSERT_USER, params);</span><br><span class="line">    String a &#x3D; null;</span><br><span class="line">    a.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+
+<a id="more"></a>
+
+
+<p>测试addUser()方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class TestJdbc &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        ApplicationContext ac</span><br><span class="line">            &#x3D; new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);</span><br><span class="line">        UserDao dao&#x3D;ac.getBean(&quot;userDao&quot;,UserDao.class);</span><br><span class="line">        User u&#x3D;new User();</span><br><span class="line">        u.setName(&quot;testUser&quot;);</span><br><span class="line">        u.setAge(&quot;24&quot;);</span><br><span class="line">        u.setPassword(&quot;123456&quot;);</span><br><span class="line">        dao.addUser(u);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>执行时，控制台抛出<code>NullPointerException</code>异常，但是数据插入成功了么？查询数据库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; select * from lzp.userinfo;</span><br><span class="line"> </span><br><span class="line">USERI NAME       AGE PWD</span><br><span class="line">----- ---------- --- ----------</span><br><span class="line">8     testUser   24  123456</span><br><span class="line">4     SCOTT      25  123456</span><br></pre></td></tr></table></figure>
+
+
+
+<p>发现虽然<code>addUser()</code>方法抛出了异常，但是数据还是被成功的插入，这违背了事务的ACID原则。</p>
+<p>Spring提供了对事务管理的支持。这里仅介绍声明式事务。</p>
+<h2 id="选择事务管理器"><a href="#选择事务管理器" class="headerlink" title="选择事务管理器"></a>选择事务管理器</h2><h3 id="JDBC事务管理器"><a href="#JDBC事务管理器" class="headerlink" title="JDBC事务管理器"></a>JDBC事务管理器</h3><p>如果应用程序中直接使用JDBC来进行持久化，那么应该选择<code>DataSourceTransactionManager</code>作为事务管理器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id&#x3D;&quot;transactionManager&quot;</span><br><span class="line">      class&#x3D;&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;</span><br><span class="line">    &lt;property name&#x3D;&quot;dataSource&quot; ref&#x3D;&quot;dataSource&quot; &#x2F;&gt;</span><br><span class="line">&lt;&#x2F;bean&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Hibernate事务管理器"><a href="#Hibernate事务管理器" class="headerlink" title="Hibernate事务管理器"></a>Hibernate事务管理器</h3><p>如果应用程序的持久化是通过Hibernate来实现的，那么应该选择HibernateTransactionManager作为事务管理器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id&#x3D;&quot;transactionManager&quot; </span><br><span class="line">      class&#x3D;&quot;org.springframework.orm.hibernate3.HibernateTransactionManager&quot;&gt;</span><br><span class="line">    &lt;property name&#x3D;&quot;sessionFactory&quot; ref&#x3D;&quot;sessionFactory&quot; &#x2F;&gt;</span><br><span class="line">&lt;&#x2F;bean&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="事务五大属性"><a href="#事务五大属性" class="headerlink" title="事务五大属性"></a>事务五大属性</h2><h3 id="传播行为"><a href="#传播行为" class="headerlink" title="传播行为"></a>传播行为</h3><p>传播行为（propagation behavior）定义了客户端与被调用方法之间的事务边界。即何时要创建一个事务，或者何时使用已有的事务：</p>
+<table>
+<thead>
+<tr>
+<th>传播行为</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PROPAGATION_MANDATORY</td>
+<td>表示该方法必须在事务中进行，如果当前事务不存在，则会 抛出一个异常</td>
+</tr>
+<tr>
+<td>PROPAGATION_NESTED</td>
+<td>如果当前已存在一个事务，那么该方法在嵌套事务中运行。 嵌套事务可以独立于当前事务进行单独地提交或回滚。如 果当前事务不存在，那么行为和 PROPAGATION_REQUIRED一样</td>
+</tr>
+<tr>
+<td>PROPAGATION_NEVER</td>
+<td>表示当前方法不运行在事务上下文中。如果当前正有一个 事务在运行，则会抛出异常</td>
+</tr>
+<tr>
+<td>PROPAGATION_NOT_SUPPORTED</td>
+<td>表示该方法不应该运行在事务上下文中，如果存在当前事 务，在该方法运行期间，当前事务会被挂起</td>
+</tr>
+<tr>
+<td>PROPAGATION_REQUIRED</td>
+<td>表示当前方法必须运行在事务中，如果事务不存在，则启 动一个新的事务</td>
+</tr>
+<tr>
+<td>PROPAGATION_REQUIRED_NEW</td>
+<td>表示当前方法必须运行在它自己的事务中。一个新的事务 将启动。如果存在当前事务，当前事务会被挂起</td>
+</tr>
+<tr>
+<td>PROPAGATION_SUPPORTS</td>
+<td>表示当前方法不需要事务上下文，但是如果存在当前事务 的话，那么该方法会在这个事务中运行</td>
+</tr>
+</tbody></table>
+<h3 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a>隔离级别</h3><p>隔离级别（isolation level）定义了一个事务可能受其他并发事务的影响程度。并发操作相同的数据可能产生一些问题：</p>
+<p>1.脏读（Dirty reads）—— 发生在一个事务读取了另一个事务改写后但未提交的数据，如果改写被回滚了，那么第一个事务获取的数据就是“脏”的。</p>
+<p>2.不可重复读（Nonrepeatable read）—— 一个事务执行两次以上相同查询得到不同的数据。这通常是另外一个事务在此期间更新了数据。</p>
+<p>3.幻读（Phantom read）—— 一个事务读取了几行数据，另一个事务插入了几条数据，当第一个事务再次读取时发现多了几条原本没有的数据。</p>
+<p>隔离级别如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>隔离级别</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ISOLATION_DEFAULT</td>
+<td>使用后端数据库默认的隔离级别</td>
+</tr>
+<tr>
+<td>ISOLATION_READ_UNCOMMITTED</td>
+<td>允许读取尚未提交的数据表更。可能导致脏读，不可重复 读，幻读</td>
+</tr>
+<tr>
+<td>ISOLATION_READ_COMMITTED</td>
+<td>允许读取并发事务已经提交的数据，可以阻止脏读，但不 可重复读，幻读仍可能发生</td>
+</tr>
+<tr>
+<td>ISOLATION_REPEATABLE_READ</td>
+<td>对同一字段的多次读取结果一致，除非数据是本事务自己 修改的。可以阻止脏读，不可重复读，但仍可能发生幻读</td>
+</tr>
+<tr>
+<td>REPEATABLE_SERIALIZABLE</td>
+<td>完全服从事务的ACID原则，避免脏读，不可重复读，幻读</td>
+</tr>
+</tbody></table>
+<p>可以看出，<code>ISOLATION_READ_UNCOMMITTED</code>隔离级别是最低的，可能导致脏读，不可重复读，幻读。<code>REPEATABLE_SERIALIZABLE</code>隔离级别最高，但是这会降低数据读取速率，它通常是通过完全锁定事务相关的数据库表来实现的。</p>
+<h3 id="只读"><a href="#只读" class="headerlink" title="只读"></a>只读</h3><p>只读（read-only） 如果事务只读数据库进行读操作，那么设置该属性为true可以给数据库执行优化措施。</p>
+<p>因为只读是在事务启动，由数据库实施的，所以对那些具备启动一个新的事务的传播行为（<code>PROPAGATION_REQUIRED</code>，<code>PROPAGATION_REQUIRED_NEW</code>和<code>PROPAGATION_NESTED</code>）才有意义。</p>
+<p>设置只读还会使Hibernate的flush模式被设置为FLUSH_NEVER。</p>
+<h3 id="事务超时"><a href="#事务超时" class="headerlink" title="事务超时"></a>事务超时</h3><p>超时（timeout）假如事务运行时间过长，则会影响效率，所以可以设置超时属性，超时后执行自动回滚。因为超时时钟会在事务开启时启动，所以只有对那些具备启动一个新的事务的传播行为（<code>PROPAGATION_REQUIRED</code>，<code>PROPAGATION_REQUIRED_NEW</code>和<code>PROPAGATION_NESTED</code>）才有意义。</p>
+<h3 id="回滚原则"><a href="#回滚原则" class="headerlink" title="回滚原则"></a>回滚原则</h3><p>默认情况遇到运行期异常就回滚。回滚原则可以定义遇到哪些异常不回滚。</p>
+<h2 id="XML中定义事务"><a href="#XML中定义事务" class="headerlink" title="XML中定义事务"></a>XML中定义事务</h2><p>使用<code>tx</code>命名空间配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;tx:advice id&#x3D;&quot;txAdvice&quot; transaction-manager&#x3D;&quot;transactionManager&quot;&gt;</span><br><span class="line">    &lt;tx:attributes&gt;</span><br><span class="line">        &lt;tx:method name&#x3D;&quot;add*&quot; propagation&#x3D;&quot;REQUIRED&quot;&#x2F;&gt;</span><br><span class="line">        &lt;tx:method name&#x3D;&quot;*&quot; propagation&#x3D;&quot;SUPPORTS&quot; read-only&#x3D;&quot;true&quot;&#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;tx:attributes&gt;</span><br><span class="line">&lt;&#x2F;tx:advice&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><code>transaction-manager</code>为上述的事务管理器。</p>
+<p>``元素为某个（某些）name属性指定的方法定义事务参数。</p>
+<p>``有多个属性来帮助定义方法的事务策略，这些属性对于上述的事务五大属性：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>isolation</td>
+<td>指定隔离级别</td>
+</tr>
+<tr>
+<td>propagation</td>
+<td>指定传播原则</td>
+</tr>
+<tr>
+<td>read-only</td>
+<td>指定事务为只读</td>
+</tr>
+<tr>
+<td>回滚原则： rollback-for no-rollback-for</td>
+<td>rollback-for指定事务为哪些检查型异常回滚 no-rollback-for指定事务对哪些异常继续运行而不回滚</td>
+</tr>
+<tr>
+<td>timeout</td>
+<td>设定事务超时时间</td>
+</tr>
+</tbody></table>
+<p>我们还需设定哪些Bean应该被通知，使用aop定义一个通知器（<code>advisor</code>）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;aop:config&gt;</span><br><span class="line">    &lt;aop:advisor</span><br><span class="line">        pointcut&#x3D;&quot;execution(* *..UserDaoImpl.*(..))&quot;	</span><br><span class="line">        advice-ref&#x3D;&quot;txAdvice&quot;&#x2F;&gt;</span><br><span class="line">&lt;&#x2F;aop:config&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><code>advice-ref</code>属性引用了名为txAdvice的通知。</p>
+<p>现在测试添加事务后的<code>addUser()</code>方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class TestTransaction &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        ApplicationContext ac</span><br><span class="line">            &#x3D; new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);</span><br><span class="line">        UserDao dao&#x3D;ac.getBean(&quot;userDao&quot;,UserDao.class);</span><br><span class="line">        User u&#x3D;new User();</span><br><span class="line">        u.setName(&quot;testTx&quot;);</span><br><span class="line">        u.setAge(&quot;30&quot;);</span><br><span class="line">        u.setPassword(&quot;123456&quot;);</span><br><span class="line">        dao.addUser(u);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>控制台抛出异常：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Exception in thread &quot;main&quot; java.lang.NullPointerException</span><br><span class="line">	at com.spring.dao.UserDaoImpl.addUser(UserDaoImpl.java:51)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>查询数据：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; select * from lzp.userinfo;</span><br><span class="line"> </span><br><span class="line">USERI NAME       AGE PWD</span><br><span class="line">----- ---------- --- ----------</span><br><span class="line">8     testUser   24  123456</span><br><span class="line">4     SCOTT      25  123456</span><br></pre></td></tr></table></figure>
+
+
+
+<p>可以发现testTx并没有被插入。</p>
+<h2 id="注解事务"><a href="#注解事务" class="headerlink" title="注解事务"></a>注解事务</h2><p>除了使用XML定义事务，我们还可以注解事务，通过声明：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;tx:annotation-driven transaction-manager&#x3D;&quot;transactionManager&quot;&#x2F;&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>``告诉Spring检查上下文中所有使用<code>@Transaction</code>注解的Bean，不管这个注解是在类级别上还是方法级别上。</p>
+<p>使用注解修改UserDaoImpl：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">@Repository(&quot;userDao&quot;)</span><br><span class="line">@Transactional(propagation&#x3D;Propagation.SUPPORTS,readOnly&#x3D;true)</span><br><span class="line">public class UserDaoImpl implements UserDao &#123;</span><br><span class="line">    &#x2F;&#x2F;...</span><br><span class="line">    @Transactional(propagation&#x3D;Propagation.REQUIRED,readOnly&#x3D;false)</span><br><span class="line">    public void addUser(User user) &#123;</span><br><span class="line">        Map&lt;String, Object&gt; params&#x3D;new HashMap&lt;String, Object&gt;();</span><br><span class="line">        params.put(&quot;name&quot;, user.getName());</span><br><span class="line">        params.put(&quot;age&quot;, user.getAge());</span><br><span class="line">        params.put(&quot;pwd&quot;, user.getPassword());</span><br><span class="line">        jdbcTemplate.update(SQL_INSERT_USER, params);</span><br><span class="line">        String a&#x3D;null;</span><br><span class="line">        a.toString();</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>再次运行testTransaction()方法，抛出异常后查询数据库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; select * from lzp.userinfo;</span><br><span class="line"> </span><br><span class="line">USERI NAME       AGE PWD</span><br><span class="line">----- ---------- --- ----------</span><br><span class="line">8     testUser   24  123456</span><br><span class="line">4     SCOTT      25  123456</span><br></pre></td></tr></table></figure>
+
+
+
+<p>可发现和XML配置事务效果是一样的。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>恰饭码<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.JPG">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wechat.JPG">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/23/Spring%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/02/12/SpringBoot%E5%BC%80%E5%90%AF/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          SpringBoot开启
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2020/01/21/Spring-XML%E4%B8%AD%E5%A3%B0%E6%98%8E%E5%88%87%E9%9D%A2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Spring XML中声明切面</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -209,8 +518,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
@@ -327,27 +636,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接2</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接3</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接4</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接5</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接6</a>
+              <a href="/null" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>没有</a>
             </li>
           
         </ul>
@@ -358,7 +647,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">YYY&lt;br&gt;</div>
   	  	
     	</section>
     
