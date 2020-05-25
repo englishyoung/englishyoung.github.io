@@ -146,6 +146,85 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Docker入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/25/Docker%E5%85%A5%E9%97%A8/">Docker入门</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/25/Docker%E5%85%A5%E9%97%A8/" class="archive-article-date">
+  	<time datetime="2020-03-25T14:16:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>linux系统最低要求centos7</p>
+</blockquote>
+<h1 id="基本的安装配置"><a href="#基本的安装配置" class="headerlink" title="基本的安装配置"></a>基本的安装配置</h1><ol>
+<li>卸载旧版本</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum remove docker \</span><br><span class="line">                  docker-client \</span><br><span class="line">                  docker-client-latest \</span><br><span class="line">                  docker-common \</span><br><span class="line">                  docker-latest \</span><br><span class="line">                  docker-latest-logrotate \</span><br><span class="line">                  docker-logrotate \</span><br><span class="line">                  docker-engine</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>安装环境</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install -y yum-utils</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>设置镜像仓库
+        
+          <a class="article-more-a" href="/2020/03/25/Docker%E5%85%A5%E9%97%A8/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/25/Docker%E5%85%A5%E9%97%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-SpringBoot一些配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -178,82 +257,9 @@
 
 <p>banner也可以关闭，在main方法中：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    SpringApplication app &#x3D; new SpringApplication(DemoApplication.class);</span><br><span class="line">    app.setBannerMode(Mode.OFF);</span><br><span class="line">    app.run(args);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="全局配置文件"><a href="#全局配置文件" class="headerlink" title="全局配置文件"></a>全局配置文件</h2><p>在src/main/resources目录下，Spring Boot提供了一个名为application.properties的全局配置文件，可对一些默认配置的配置值进行修改。</p>
-<blockquote>
-<p>附：<a href="https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html" target="_blank" rel="noopener">application.properties中可配置所有官方属性</a></p>
-</blockquote>
-<h3 id="自定义属性值"><a href="#自定义属性值" class="headerlink" title="自定义属性值"></a>自定义属性值</h3><p>Spring Boot允许我们在application.properties下自定义一些属性，比如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mrbird.blog.name&#x3D;mrbird&#39;s blog</span><br><span class="line">mrbird.blog.title&#x3D;Spring Boot</span><br></pre></td></tr></table></figure>
-
-
-
-<p>定义一个BlogProperties Bean，通过<code>@Value(&quot;${属性名}&quot;)</code>来加载配置文件中的属性值：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Component</span><br><span class="line">public class BlogProperties &#123;</span><br><span class="line">	</span><br><span class="line">    @Value(&quot;$&#123;mrbird.blog.name&#125;&quot;)</span><br><span class="line">    private String name;</span><br><span class="line">    </span><br><span class="line">    @Value(&quot;$&#123;mrbird.blog.title&#125;&quot;)</span><br><span class="line">    private String title;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; get,set略	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>编写IndexController，注入该Bean：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">public class IndexController &#123;</span><br><span class="line">    @Autowired</span><br><span class="line">    private BlogProperties blogProperties;</span><br><span class="line">    </span><br><span class="line">    @RequestMapping(&quot;&#x2F;&quot;)</span><br><span class="line">    String index() &#123;</span><br><span class="line">        return blogProperties.getName()+&quot;——&quot;+blogProperties.getTitle();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>启动项目，访问<a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080</a>，页面显示如下：</p>
-<p><img src="https://mrbird.cc/img/QQ%E6%88%AA%E5%9B%BE20171130112735.png" alt="QQ截图20171130112735.png"></p>
-<p>在属性非常多的情况下，也可以定义一个和配置文件对应的Bean：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@ConfigurationProperties(prefix&#x3D;&quot;mrbird.blog&quot;)</span><br><span class="line">public class ConfigBean &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private String title;</span><br><span class="line">    &#x2F;&#x2F; get,set略</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>通过注解<code>@ConfigurationProperties(prefix=&quot;mrbird.blog&quot;)</code>指明了属性的通用前缀，通用前缀加属性名和配置文件的属性名一一对应。</p>
-<p>除此之外还需在Spring Boot入口类加上注解<code>@EnableConfigurationProperties({ConfigBean.class})</code>来启用该配置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication</span><br><span class="line">@EnableConfigurationProperties(&#123;ConfigBean.class&#125;)</span><br><span class="line">public class Application &#123;</span><br><span class="line">	</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        SpringApplication.run(Application.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>之后便可在IndexController中注入该Bean，并使用了：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">public class IndexController &#123;</span><br><span class="line">    @Autowired</span><br><span class="line">    private ConfigBean configBean;</span><br><span class="line">    </span><br><span class="line">    @RequestMapping(&quot;&#x2F;&quot;)</span><br><span class="line">    String index() &#123;</span><br><span class="line">        return configBean.getName()+&quot;——&quot;+configBean.getTitle();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="属性间的引用"><a href="#属性间的引用" class="headerlink" title="属性间的引用"></a>属性间的引用</h3><p>在application.properties配置文件中，各个属性可以相互引用，如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mrbird.blog.name&#x3D;mrbird&#39;s blog</span><br><span class="line">mrbird.blog.title&#x3D;Spring Boot</span><br><span class="line">mrbird.blog.wholeTitle&#x3D;$&#123;mrbird.blog.name&#125;--$&#123;mrbird.blog.title&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="自定义配置文件"><a href="#自定义配置文件" class="headerlink" title="自定义配置文件"></a>自定义配置文件</h2><p>除了可以在application.properties里配置属性，我们还可以自定义一个配置文件。在src/main/resources目录下新建一个test.properties:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">test.name&#x3D;KangKang</span><br><span class="line">test.age&#x3D;25</span><br></pre></td></tr></table></figure>
-
-
-
-<p>定义一个对应该配置文件的Bean：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">@ConfigurationProperties(prefix&#x3D;&quot;test&quot;)</span><br><span class="line">@PropertySource(&quot;classpath:test.properties&quot;)</span><br><span class="line">@Component</span><br><span class="line">public class TestConfigBean &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line">    &#x2F;&#x2F; get,set略</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>注解<code>@PropertySource(&quot;classpath:test.properties&quot;)</code>指明了使用哪个配置文件。要使用该配置Bean，同样也需要在入口类里使用注解<code>@EnableConfigurationProperties({TestConfigBean.class})</code>来启用该配置。</p>
-<h2 id="通过命令行设置属性值"><a href="#通过命令行设置属性值" class="headerlink" title="通过命令行设置属性值"></a>通过命令行设置属性值</h2><p>在运行Spring Boot jar文件时，可以使用命令<code>java -jar xxx.jar --server.port=8081</code>来改变端口的值。这条命令等价于我们手动到application.properties中修改（如果没有这条属性的话就添加）server.port属性的值为8081。</p>
-<p>如果不想项目的配置被命令行修改，可以在入口文件的main方法中进行如下设置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    SpringApplication app &#x3D; new SpringApplication(Application.class);</span><br><span class="line">    app.setAddCommandLineProperties(false);</span><br><span class="line">    app.run(args);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="使用xml配置"><a href="#使用xml配置" class="headerlink" title="使用xml配置"></a>使用xml配置</h2><p>虽然Spring Boot并不推荐我们继续使用xml配置，但如果出现不得不使用xml配置的情况，Spring Boot允许我们在入口类里通过注解<code>@ImportResource({&quot;classpath:some-application.xml&quot;})</code>来引入xml配置文件。</p>
-<h2 id="Profile配置"><a href="#Profile配置" class="headerlink" title="Profile配置"></a>Profile配置</h2><p>Profile用来针对不同的环境下使用不同的配置文件，多环境配置文件必须以<code>application-{profile}.properties</code>的格式命，其中<code>{profile}</code>为环境标识。比如定义两个配置文件：</p>
-<ul>
-<li><p>application-dev.properties：开发环境</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">server.port&#x3D;8080</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>application-prod.properties：生产环境</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">server.port&#x3D;8081</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>至于哪个具体的配置文件会被加载，需要在application.properties文件中通过<code>spring.profiles.active</code>属性来设置，其值对应<code>{profile}</code>值。</p>
-<p>如：<code>spring.profiles.active=dev</code>就会加载application-dev.properties配置文件内容。可以在运行jar文件的时候使用命令<code>java -jar xxx.jar --spring.profiles.active={profile}</code>切换不同的环境配置。</p>
-
+        
+          <a class="article-more-a" href="/2020/02/13/SpringBoot%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE/#more">more >></a>
+        
       
 
       
@@ -870,68 +876,10 @@
 
 
   
-    <article id="post-yyynbnbnb" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/26/yyynbnbnb/">First</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/26/yyynbnbnb/" class="archive-article-date">
-  	<time datetime="2019-12-26T15:29:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="OHOHOHOHOHOHOHOHOHOHOHOHOHOHOH"><a href="#OHOHOHOHOHOHOHOHOHOHOHOHOHOHOH" class="headerlink" title="OHOHOHOHOHOHOHOHOHOHOHOHOHOHOH"></a>OHOHOHOHOHOHOHOHOHOHOHOHOHOHOH</h2>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/26/yyynbnbnb/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    </nav>
   
 
 
