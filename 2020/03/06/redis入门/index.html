@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Java.math.BigDecimal类常用方法 | EnglishYongSpace</title>
+  <title>redis入门 | EnglishYongSpace</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在编程中，当我们需要得到精确的运算结果的时候，+，-，*，&#x2F; 已经不能满足我们的需求，比如： 1234System.out.println(0.1+0.2); &#x2F;&#x2F;0.30000000000000004System.out.println(0.3-0.2); &#x2F;&#x2F;0.09999999999999998System.out.println(0.1*0.2);">
+  <meta name="description" content="配置文件位置redis根目录的redis.conf 基本操作启动 本地情况下   直接打开redis-server服务端文件，再打开redis-cli客户端文件 终端命令redis-server启动服务端，redis-cli启动客户端   远程连接redis-cli -h [host] -p [port] -a [password] 指定配置文件启动redis-server &#x2F;xxx&#x2F;ddd&#x2F;xx">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java.math.BigDecimal类常用方法">
-<meta property="og:url" content="http://yoursite.com/2020/01/13/Java-math-BigDecimal%E7%B1%BB%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:title" content="redis入门">
+<meta property="og:url" content="http://yoursite.com/2020/03/06/redis%E5%85%A5%E9%97%A8/index.html">
 <meta property="og:site_name" content="EnglishYongSpace">
-<meta property="og:description" content="在编程中，当我们需要得到精确的运算结果的时候，+，-，*，&#x2F; 已经不能满足我们的需求，比如： 1234System.out.println(0.1+0.2); &#x2F;&#x2F;0.30000000000000004System.out.println(0.3-0.2); &#x2F;&#x2F;0.09999999999999998System.out.println(0.1*0.2);">
+<meta property="og:description" content="配置文件位置redis根目录的redis.conf 基本操作启动 本地情况下   直接打开redis-server服务端文件，再打开redis-cli客户端文件 终端命令redis-server启动服务端，redis-cli启动客户端   远程连接redis-cli -h [host] -p [port] -a [password] 指定配置文件启动redis-server &#x2F;xxx&#x2F;ddd&#x2F;xx">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-01-13T03:23:34.000Z">
-<meta property="article:modified_time" content="2020-06-02T18:21:15.273Z">
+<meta property="article:published_time" content="2020-03-06T03:36:43.000Z">
+<meta property="article:modified_time" content="2020-06-02T18:37:57.819Z">
 <meta property="article:author" content="EnglishYongSpace">
-<meta property="article:tag" content="Java基础">
+<meta property="article:tag" content="Redis">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="EnglishYongSpace" type="application/atom+xml">
@@ -149,75 +149,214 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Java-math-BigDecimal类常用方法" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-redis入门" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Java.math.BigDecimal类常用方法
+      redis入门
     </h1>
   
 
         
-        <a href="/2020/01/13/Java-math-BigDecimal%E7%B1%BB%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2020-01-13T03:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-13</time>
+        <a href="/2020/03/06/redis%E5%85%A5%E9%97%A8/" class="archive-article-date">
+  	<time datetime="2020-03-06T03:36:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在编程中，当我们需要得到精确的运算结果的时候，+，-，*，/ 已经不能满足我们的需求，比如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(0.1+0.2); &#x2F;&#x2F;0.30000000000000004</span><br><span class="line">System.out.println(0.3-0.2); &#x2F;&#x2F;0.09999999999999998</span><br><span class="line">System.out.println(0.1*0.2); &#x2F;&#x2F;0.020000000000000004</span><br><span class="line">System.out.println(1.2&#x2F;3);   &#x2F;&#x2F;0.39999999999999997</span><br></pre></td></tr></table></figure>
-
-
-
-<p>简单的运算结果却不符合我们的预期。</p>
+        <h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><h3 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h3><p>redis根目录的redis.conf</p>
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><ul>
+<li>本地情况下</li>
+</ul>
+<ol>
+<li>直接打开redis-server服务端文件，再打开redis-cli客户端文件</li>
+<li>终端命令redis-server启动服务端，redis-cli启动客户端</li>
+</ol>
+<ul>
+<li>远程连接<br>redis-cli -h [host] -p [port] -a [password]</li>
+<li>指定配置文件启动<br>redis-server /xxx/ddd/xxx/redis.comf</li>
+</ul>
 <a id="more"></a>
 
-<p>Java提供了一个叫BigDecimal的类，该类支持任何精度的定点数，可以用它来精确计算货币值。</p>
-<p>java.math.BigDecimal类共有四个构造方法：</p>
-<p>1.BigDecimal(int) —-int类型转为BigDecimal类型</p>
-<p>2.BigDecimal(double) —-double类型转为BigDecimal类型</p>
-<p>3.BigDecimal(long) —-long类型转为BigDecimal类型</p>
-<p>4.BigDecimal(string) —-string类型转为BigDecimal类型</p>
-<p>实际使用中，一般使用BigDecimal(string)构造方法。因为将string类型转为BigDecimal的结果是可预知的。</p>
-<p>相反，如通过构造方法BigDecimal(0.1) 将0.1转为BigDecimal类型：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(new BigDecimal(0.1)); &#x2F;&#x2F;0.1000000000000000055511151...</span><br></pre></td></tr></table></figure>
+<h3 id="关闭"><a href="#关闭" class="headerlink" title="关闭"></a>关闭</h3><p>redis-cli -h [host] -p [port] shutdown</p>
+<h3 id="Key操作"><a href="#Key操作" class="headerlink" title="Key操作"></a>Key操作</h3><ul>
+<li><p>查看所有key</p>
+<blockquote>
+<p>keys *</p>
+</blockquote>
+</li>
+<li><p>删除指定key</p>
+<blockquote>
+<p>del [key]</p>
+</blockquote>
+</li>
+<li><p>获取key是否存在</p>
+<blockquote>
+<p>exists [key]</p>
+</blockquote>
+</li>
+<li><p>获取key的类型</p>
+<blockquote>
+<p>type [key]</p>
+</blockquote>
+</li>
+<li><p>时效性</p>
+<blockquote>
+<p>expire [key] [seconds]//单位秒<br>pexpire [key] [milliseconds]//毫秒</p>
+</blockquote>
+</li>
+<li><p>获取key的有效时间</p>
+<blockquote>
+<p>ttl [key]   //返回值有三种：-2(没有该key)、-1(永久的未设置有效时长的key)、有效时长<br>pttl [key]    //与pexpire对应，单位不同</p>
+</blockquote>
+</li>
+<li><p>切换key从时效性转为永久</p>
+<blockquote>
+<p>persist key</p>
+</blockquote>
+</li>
+<li><p>为key改名</p>
+<blockquote>
+<p>rename key [newkeyname]<br>renamenx key [newkeyname]  //如果newkeyname不存在的话更改</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="DB操作"><a href="#DB操作" class="headerlink" title="DB操作"></a>DB操作</h3><ul>
+<li>切换数据库(redis提供16个数据库,编号0~15)<blockquote>
+<p>select [index]   //0~15</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="其他操作"><a href="#其他操作" class="headerlink" title="其他操作"></a>其他操作</h3><ul>
+<li><p>验证密码是否正确<br>AUTH password</p>
+</li>
+<li><p>打印字符串<br>ECHO message</p>
+</li>
+<li><p>查看服务是否运行<br>PING</p>
+</li>
+<li><p>关闭当前连接<br>QUIT</p>
+</li>
+<li><p>切换到指定的数据库<br>SELECT index</p>
+<h3 id="各种数据类型的操作"><a href="#各种数据类型的操作" class="headerlink" title="各种数据类型的操作"></a>各种数据类型的操作</h3><h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4></li>
+<li><p>存入</p>
+<blockquote>
+<p>set [key] [value]</p>
+</blockquote>
+</li>
+<li><p>删除</p>
+<blockquote>
+<p>del [key]</p>
+</blockquote>
+</li>
+<li><p>获取</p>
+<blockquote>
+<p>get [key]</p>
+</blockquote>
+</li>
+<li><p>添加多个</p>
+<blockquote>
+<p>mset [key1] [value1] [key2] [value2]</p>
+</blockquote>
+</li>
+<li><p>获取多个</p>
+<blockquote>
+<p>mget [key1] [key2]</p>
+</blockquote>
+</li>
+<li><p>获取字符串长度</p>
+<blockquote>
+<p>strlen key</p>
+</blockquote>
+</li>
+<li><p>追加信息到原始信息后补(如果存在就追加，否则新建)</p>
+<blockquote>
+<p>append [key] [value]</p>
+</blockquote>
+</li>
+<li><p>时效性控制</p>
+<blockquote>
+<p>直接在创建的时候就设置<br>setex [key] [seconds(秒)] [value]<br>或者<br>expire [key] [value]</p>
+</blockquote>
+<h4 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h4></li>
+<li><p>添加/修改数据</p>
+<blockquote>
+<p>hset [key] [field] [value]</p>
+</blockquote>
+</li>
+<li><p>获取数据</p>
+<blockquote>
+<p>hgetall [key]//获取该key所有键值对<br>hget [key] [field]</p>
+</blockquote>
+</li>
+<li><p>删除数据</p>
+<blockquote>
+<p>hdel [key] [field1] [field2]</p>
+</blockquote>
+</li>
+<li><p>添加/修改多个数据</p>
+<blockquote>
+<p>hmset [key] [field1] [value1] [field2] [value2]····</p>
+</blockquote>
+</li>
+<li><p>获取多个数据</p>
+<blockquote>
+<p>hmget [key] [field1] [field2]</p>
+</blockquote>
+</li>
+<li><p>获取字段数量</p>
+<blockquote>
+<p>hlen [key]</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="List"><a href="#List" class="headerlink" title="List"></a>List</h4><ul>
+<li>添加/修改数据<blockquote>
+<p>lpush key [value1] [value2]···<br>rpush key [value1] [value2]···</p>
+</blockquote>
+</li>
+<li>获取数据<blockquote>
+<p>lrange [key] [start] [stop]<br>lindex [key] [index]<br>llen [key]//长度</p>
+</blockquote>
+</li>
+<li>获取并移除数据<blockquote>
+<p>lpop [key]<br>rpop [key]</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="set"><a href="#set" class="headerlink" title="set"></a>set</h4><ul>
+<li>添加数据<blockquote>
+<p>sadd [key] [member1] [member2]···</p>
+</blockquote>
+</li>
+<li>获取全部数据<blockquote>
+<p>hmembers [key]</p>
+</blockquote>
+</li>
+<li>删除数据<blockquote>
+<p>srem [key] [member1]</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="sorted-set"><a href="#sorted-set" class="headerlink" title="sorted_set"></a>sorted_set</h4><ul>
+<li>添加数据<blockquote>
+<p>zadd key [score1] [member1] [score2] [member2]····</p>
+</blockquote>
+</li>
+<li>获取全部数据(自动排序，从小到大)<blockquote>
+<p>zrange key [start] <a href="使用0,-1列出所有">stop</a> withscores（是否显示score）   //小到大排<br>zrevrange key [start] [stop] withscores  //大到小排</p>
+</blockquote>
+</li>
+<li>删除数据<blockquote>
+<p>zrem [key] [member1] [member2]···</p>
+</blockquote>
+</li>
+</ul>
 
-
-
-<p>因为0.1并不能精确的表示为double</p>
-<p>而通过BigDecimal(string)我们可以得到预期的转换结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(new BigDecimal(&quot;0.1&quot;)); &#x2F;&#x2F;0.1</span><br></pre></td></tr></table></figure>
-
-
-
-<p>常用方法：</p>
-<p>1.加法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">BigDecimal add&#x3D;new BigDecimal(&quot;0.1&quot;).add(new BigDecimal(&quot;0.2&quot;));</span><br><span class="line">System.out.println(add);  &#x2F;&#x2F;0.3</span><br><span class="line">&#x2F;&#x2F;保留两位有效数字</span><br><span class="line">BigDecimal add1&#x3D;new BigDecimal(&quot;0.1&quot;)</span><br><span class="line">        .add(new BigDecimal(&quot;0.22222222222&quot;),new MathContext(2));</span><br><span class="line">System.out.println(add1); &#x2F;&#x2F;0.32</span><br></pre></td></tr></table></figure>
-
-
-
-<p>2.减法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">BigDecimal sub&#x3D;new BigDecimal(&quot;0.3&quot;).subtract(new BigDecimal(&quot;0.1&quot;));</span><br><span class="line">System.out.println(sub);   &#x2F;&#x2F;0.2</span><br><span class="line">&#x2F;&#x2F;保留两位有效数字</span><br><span class="line">BigDecimal sub&#x3D;new BigDecimal(&quot;0.3&quot;)</span><br><span class="line">        .subtract(new BigDecimal(&quot;0.111111111&quot;),new MathContext(2));</span><br><span class="line">System.out.println(sub);   &#x2F;&#x2F;0.19</span><br></pre></td></tr></table></figure>
-
-
-
-<p>3.乘法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">BigDecimal mul&#x3D;new BigDecimal(&quot;0.1&quot;).multiply(new BigDecimal(&quot;0.2&quot;));</span><br><span class="line">System.out.println(mul); &#x2F;&#x2F;0.02</span><br><span class="line">&#x2F;&#x2F;保留两位有效数字</span><br><span class="line">BigDecimal mul1&#x3D;new BigDecimal(&quot;0.1&quot;)</span><br><span class="line">     .multiply(new BigDecimal(&quot;0.2222222222&quot;),new MathContext(2));</span><br><span class="line">System.out.println(mul1); &#x2F;&#x2F;0.022</span><br></pre></td></tr></table></figure>
-
-
-
-<p>4.除法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">BigDecimal div&#x3D;new BigDecimal(&quot;1.2&quot;).divide(new BigDecimal(&quot;3&quot;));</span><br><span class="line">System.out.println(div);﻿ &#x2F;&#x2F;0.4</span><br><span class="line">&#x2F;&#x2F;保留两位有效数字</span><br><span class="line">BigDecimal div1&#x3D;new BigDecimal(&quot;1&quot;)</span><br><span class="line">        .divide(new BigDecimal(&quot;3&quot;),new MathContext(2));</span><br><span class="line">System.out.println(div1);  &#x2F;&#x2F;0.33</span><br><span class="line">&#x2F;&#x2F;四舍五入，保留两位小数</span><br><span class="line">BigDecimal div2&#x3D;new BigDecimal(&quot;2&quot;)</span><br><span class="line">        .divide(new BigDecimal(&quot;3&quot;), 2, RoundingMode.HALF_UP);</span><br><span class="line">System.out.println(div2);  &#x2F;&#x2F;0.67</span><br></pre></td></tr></table></figure>
-
-
-
-<p>5.比较大小：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;小于，返回-1</span><br><span class="line">int result&#x3D;new BigDecimal(&quot;0.1&quot;).compareTo(new BigDecimal(&quot;0.2&quot;));</span><br><span class="line">System.out.println(result);   &#x2F;&#x2F;-1 </span><br><span class="line">&#x2F;&#x2F;等于，返回 0</span><br><span class="line">int result&#x3D;new BigDecimal(&quot;0.2&quot;).compareTo(new BigDecimal(&quot;0.2&quot;));</span><br><span class="line">System.out.println(result); &#x2F;&#x2F;0</span><br><span class="line">&#x2F;&#x2F;大于，返回 1</span><br><span class="line">int result&#x3D;new BigDecimal(&quot;0.3&quot;).compareTo(new BigDecimal(&quot;0.2&quot;));</span><br><span class="line">System.out.println(result);  &#x2F;&#x2F;1</span><br></pre></td></tr></table></figure>
       
 
       
@@ -261,7 +400,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Java基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Redis</a>
         		</li>
       		
 		</ul>
@@ -317,7 +456,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/13/Java-math-BigDecimal%E7%B1%BB%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/06/redis%E5%85%A5%E9%97%A8/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -331,18 +470,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/01/18/Spring%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/03/07/redis%E6%8C%81%E4%B9%85%E5%8C%96/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Spring自动装配 
+          redis持久化
         
       </div>
     </a>
   
   
-    <a href="/2020/01/12/Java%E5%B9%B6%E5%8F%91%E5%9F%BA%E7%A1%80/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java并发基础</div>
+    <a href="/2020/02/13/SpringBoot%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SpringBoot一些配置 </div>
       <i class="icon-circle-right"></i>
     </a>
   
